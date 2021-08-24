@@ -35,8 +35,7 @@ const Monitoring = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Header type="dashboard" title="All Location" />
-      <ScrollView>
-        <View style={styles.image} />
+      <ScrollView style={styles.containerFlex}>
         <Text style={styles.title}>Lokasi Box Tisu :</Text>
         <View style={styles.content}>
           {dataTisue.map(item => {
@@ -44,7 +43,8 @@ const Monitoring = ({navigation}) => {
               <LokasiTisu
                 key={item.id}
                 data={item.data.jumlahtisu}
-                tempat={item.data.tempat}
+                tempat={item.data.lokasi}
+                harga={item.data.harga}
                 onPress={() => navigation.navigate('DetailTisu', item)}
               />
             );
@@ -62,19 +62,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F9F8F0',
   },
-  image: {
-    alignItems: 'center',
-    marginTop: 11,
-    marginBottom: 30,
-  },
+
   content: {
-    paddingHorizontal: 19,
+    paddingHorizontal: 7,
     paddingTop: 5,
   },
   title: {
-    paddingHorizontal: 19,
+    paddingHorizontal: 17,
     fontSize: 15,
     fontFamily: 'Assistant-SemiBold',
     marginBottom: 19,
+  },
+  containerFlex: {
+    backgroundColor: '#FED799',
+    flex: 1,
+    height: '100%',
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    padding: 35,
   },
 });

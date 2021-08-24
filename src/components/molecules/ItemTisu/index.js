@@ -1,6 +1,12 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Iconnice, Iconpaseo, Iconcoinharga} from '../../../assets/icon';
+import {
+  Iconnice,
+  Iconpaseo,
+  Iconcoinharga,
+  PengisianTisu,
+  PengisianEstimasi,
+} from '../../../assets/icon';
 import {Gap} from '../../atoms';
 
 const ItemTisu = ({gambar, title, subTitle}) => {
@@ -11,6 +17,10 @@ const ItemTisu = ({gambar, title, subTitle}) => {
       return <Iconpaseo />;
     } else if (gambar === 'coin') {
       return <Iconcoinharga />;
+    } else if (gambar === 'pengisian') {
+      return <PengisianTisu />;
+    } else if (gambar === 'pengisianEstimasi') {
+      return <PengisianEstimasi />;
     } else {
       return <View />;
     }

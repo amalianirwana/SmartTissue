@@ -1,10 +1,11 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {ILEstimasi} from '../../assets';
-import {Gap} from '../../components';
+import {Button, Gap} from '../../components';
 import {Header, ItemTisu} from '../../components/molecules';
 const DetailTisu = ({navigation, route}) => {
   const detailData = route.params;
+
   console.log('data', detailData);
   return (
     <View style={{backgroundColor: '#F9F8F0', flex: 1}}>
@@ -14,11 +15,11 @@ const DetailTisu = ({navigation, route}) => {
       </View>
       <View style={styles.container}>
         <View style={styles.item}>
-          <ItemTisu gambar={detailData.data.merektisu} title="Merek Tissue" />
+          <ItemTisu gambar={detailData.data.merek} title="Merek Tissue" />
           <ItemTisu
             gambar="coin"
             title="Harga Tissue"
-            subTitle={`Rp.${detailData.data.hargatisu}`}
+            subTitle={`Rp.${detailData.data.harga}`}
           />
         </View>
         <Gap height={40} />
@@ -28,9 +29,14 @@ const DetailTisu = ({navigation, route}) => {
             subTitle={`berat : ${detailData.data.ukuran}`}
           />
           <ItemTisu
+            gambar="pengisian"
             title="Stok Tissue"
             subTitle={`${detailData.data.jumlahtisu}`}
           />
+        </View>
+        <View>
+          <Gap height={30} />
+          <Button title="Refresh Alat" />
         </View>
       </View>
     </View>

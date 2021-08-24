@@ -11,6 +11,7 @@ import {
   DetailTisu,
   ProfileUser,
   InputForm,
+  DetailEstimasi,
 } from '../pages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/molecules';
@@ -50,6 +51,11 @@ const Router = () => {
       <Stack.Screen
         name="Register"
         component={Register}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DetailEstimasi"
+        component={DetailEstimasi}
         options={{headerShown: false}}
       />
       <Stack.Screen

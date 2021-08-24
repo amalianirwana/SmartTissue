@@ -6,7 +6,7 @@ import {
   IconTisuMerah,
   IconTisuKuning,
 } from '../../../assets/icon';
-const LokasiTisu = ({data, onPress, tempat}) => {
+const LokasiTisu = ({data, onPress, tempat, harga}) => {
   const Icon = () => {
     if (data === 2) {
       return <IconTisuHijau />;
@@ -19,7 +19,10 @@ const LokasiTisu = ({data, onPress, tempat}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.wrapper}>
-        <Text style={styles.title}>{tempat}</Text>
+        <View>
+          <Text style={styles.title}>{tempat}</Text>
+          <Text style={styles.harga}>{`harga Tisu Rp${harga}`}</Text>
+        </View>
         <View style={styles.wrapperLogo}>
           <Icon style={styles.logo} />
         </View>
@@ -32,9 +35,8 @@ export default LokasiTisu;
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: 60,
-    backgroundColor: '#FED799',
+    backgroundColor: '#F97D48',
+    paddingVertical: 12,
     marginBottom: 18,
     paddingLeft: 13,
     paddingTop: 7,
@@ -50,20 +52,25 @@ const styles = StyleSheet.create({
   },
   wrapperLogo: {
     marginTop: 5,
+    backgroundColor: '#FED799',
+    padding: 8,
+    borderRadius: 12,
   },
   title: {
-    fontSize: 15,
-    fontFamily: 'Assistant-SemiBold',
+    fontSize: 20,
+    fontWeight: 'bold',
+    justifyContent: 'center',
     flex: 1,
+
+    color: 'white',
   },
-  desc: {
-    fontSize: 15,
-    fontFamily: 'Assistant-SemiBold',
-    color: '#A8A8A8',
-    marginTop: -17,
+  harga: {
+    color: 'white',
   },
+
   wrapper: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     marginRight: 20,
   },
 });
