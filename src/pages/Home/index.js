@@ -34,7 +34,9 @@ const Home = () => {
           });
           if (!unmounted) {
             const allTisu = data.length;
-            const dataExistTisu = data.filter(e => e.data.jumlahtisu === 0);
+            const dataExistTisu = data.filter(
+              e => e.data.RollA.Kondisi === 1 || e.data.RollB.Kondisi === 1,
+            );
             const lengthExistTisu = dataExistTisu.length;
             const emptyTisuData = allTisu - lengthExistTisu;
             setEmptyTisu(emptyTisuData);
@@ -67,7 +69,10 @@ const Home = () => {
   }, [getDay]);
 
   const kalkulasi = dataTisue.filter(
-    e => e.data.jumlahtisu === 0 && e.data.databaca === 'tidak',
+    e =>
+      e.data.RollA.Kondisi === 0 &&
+      e.data.RollB.Kondisi === 0 &&
+      e.data.databaca === 'tidak',
   );
 
   const dataterbaca = {
@@ -132,7 +137,7 @@ const Home = () => {
         <Gap height={20} />
         <View style={styles.item}>
           <ItemMonitoring
-            title="Tempat Tisu"
+            title="Tempat Alat Tisu"
             subTitle={`${semuaTisu} Tempat`}
           />
           <ItemMonitoring

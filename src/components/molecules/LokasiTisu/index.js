@@ -6,11 +6,13 @@ import {
   IconTisuMerah,
   IconTisuKuning,
 } from '../../../assets/icon';
-const LokasiTisu = ({data, onPress, tempat, harga}) => {
+const LokasiTisu = ({data, onPress, tempat, harga, kalkulasi1, kalkulasi2}) => {
+  const nilaiKalkulasi = kalkulasi1 + kalkulasi2;
+  console.log('nilai tisu', nilaiKalkulasi);
   const Icon = () => {
-    if (data === 2) {
+    if (nilaiKalkulasi === 2) {
       return <IconTisuHijau />;
-    } else if (data === 1) {
+    } else if (nilaiKalkulasi === 1) {
       return <IconTisuKuning />;
     } else {
       return <IconTisuMerah />;

@@ -31,6 +31,7 @@ const Monitoring = ({navigation}) => {
       unmounted = true;
     };
   }, []);
+
   console.log('Datatisu', dataTisue);
   return (
     <View style={styles.container}>
@@ -45,6 +46,8 @@ const Monitoring = ({navigation}) => {
                 data={item.data.jumlahtisu}
                 tempat={item.data.lokasi}
                 harga={item.data.harga}
+                kalkulasi1={item.data.RollA.Kondisi}
+                kalkulasi2={item.data.RollB.Kondisi}
                 onPress={() => navigation.navigate('DetailTisu', item)}
               />
             );

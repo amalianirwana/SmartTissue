@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {showMessage} from 'react-native-flash-message';
+
 import {Iconavatar} from '../../assets/icon';
 
 import {Gap, List, Profile, Header} from '../../components';

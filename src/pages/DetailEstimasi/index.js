@@ -51,11 +51,7 @@ const DetailEstimasi = ({navigation, route}) => {
             subTitle={`Rp${datahargaEstimasi}`}
           />
         </View>
-        <Gap height={40} />
-        <View style={styles.item}>
-          <ItemTisu title="Cakupan Alat" subTitle={': '} />
-          <ItemTisu title="Stok Tissue" subTitle={'kosong'} />
-        </View>
+
         <Gap height={16} />
         <View>
           <Text>Detail Biaya Bulan September</Text>

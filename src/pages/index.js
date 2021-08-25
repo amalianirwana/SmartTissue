@@ -8,7 +8,7 @@ import Monitoring from './Monitoring';
 import DetailTisu from './DetailTisu';
 import ProfileUser from './ProfileUser';
 import InputForm from './InputForm';
-import DetailEstimasi from './detailEstimasi';
+import DetailEstimasi from './DetailEstimasi';
 
 export {
   DetailEstimasi,
