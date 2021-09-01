@@ -12,6 +12,7 @@ import {
   ProfileUser,
   InputForm,
   DetailEstimasi,
+  EditAlat,
 } from '../pages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/molecules';
@@ -56,6 +57,11 @@ const Router = () => {
       <Stack.Screen
         name="DetailEstimasi"
         component={DetailEstimasi}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="EditAlat"
+        component={EditAlat}
         options={{headerShown: false}}
       />
       <Stack.Screen

@@ -6,7 +6,14 @@ import {
   IconTisuMerah,
   IconTisuKuning,
 } from '../../../assets/icon';
-const LokasiTisu = ({data, onPress, tempat, harga, kalkulasi1, kalkulasi2}) => {
+const LokasiTisu = ({
+  data,
+  onPress,
+  tempat,
+  databaca,
+  kalkulasi1,
+  kalkulasi2,
+}) => {
   const nilaiKalkulasi = kalkulasi1 + kalkulasi2;
   console.log('nilai tisu', nilaiKalkulasi);
   const Icon = () => {
@@ -18,12 +25,20 @@ const LokasiTisu = ({data, onPress, tempat, harga, kalkulasi1, kalkulasi2}) => {
       return <IconTisuMerah />;
     }
   };
+  const DataBaca = () => {
+    if (databaca === 'terbaca') {
+      return <Text style={styles.nonaktif}>Tisu di Alat Sudah habis</Text>;
+    } else if (databaca === 'tidak') {
+      return <Text style={styles.aktif}>Alat Sedang di monitoring</Text>;
+    }
+    return <Text>None</Text>;
+  };
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.wrapper}>
         <View>
           <Text style={styles.title}>{tempat}</Text>
-          <Text style={styles.harga}>{`harga Tisu Rp${harga}`}</Text>
+          <DataBaca />
         </View>
         <View style={styles.wrapperLogo}>
           <Icon style={styles.logo} />
@@ -66,10 +81,12 @@ const styles = StyleSheet.create({
 
     color: 'white',
   },
-  harga: {
+  aktif: {
     color: 'white',
   },
-
+  nonaktif: {
+    color: 'white',
+  },
   wrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',

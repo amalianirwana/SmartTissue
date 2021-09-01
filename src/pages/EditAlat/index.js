@@ -1,20 +1,14 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {showMessage} from 'react-native-flash-message';
 import {Button, Gap, Header, Input} from '../../components';
-import {Fire} from '../../config';
-import {useForm} from '../../utils';
 
-const InputForm = ({navigation}) => {
-  const [form, setForm] = useForm({
+const EditAlat = ({navigation, route}) => {
+  const detailData = route.params;
+  const [alat, setAlat] = useState({
     merek: '',
-    harga: 'Select',
     lokasi: '',
-    idTisu: '',
-    databaca: 'tidak',
-    jumlahtisu: '',
+    harga: '',
   });
-  const [loading, setLoading] = useState(false);
 
   const [itemHarga] = useState([
     {
@@ -40,33 +34,19 @@ const InputForm = ({navigation}) => {
       value: 'paseo',
     },
   ]);
-
-  const KirimDatabaseIdAlat = () => {
-    if (
-      form.merek !== '' &&
-      form.harga !== '' &&
-      form.lokasi !== '' &&
-      form.idTisu !== ''
-    ) {
-      Fire.database().ref(`Tisu/${form.idTisu}/`).set(form);
-      navigation.reset({
-        index: 0,
-        routes: [{name: 'MainApp'}],
-      });
-    } else {
-      showMessage({
-        message: 'anda Belum Masukan data',
-        type: 'default',
-        backgroundColor: 'red',
-        color: 'white',
-      });
-    }
+  const changeText = (key, value) => {
+    setAlat({
+      ...detailData,
+      [key]: value,
+    });
   };
-
+  const SimpanAlat = () => {
+    console.log('s');
+  };
   return (
-    <View style={{backgroundColor: '#F9F8F0', flex: 1}}>
+    <View style={styles.page}>
       <View style={styles.header}>
-        <Header title="Tambah Alat" onPress={() => navigation.goBack()} />
+        <Header title="Edit Alat" onPress={() => navigation.goBack()} />
       </View>
       <ScrollView>
         <View style={styles.container}>
@@ -74,15 +54,15 @@ const InputForm = ({navigation}) => {
             label="Merek Tisu"
             select
             selectItem={itemMerek}
-            onValueChange={value => setForm('merek', value)}
-            value={form.merek}
+            onChangeText={value => changeText('merek', value)}
+            value={detailData.merek}
           />
           <Gap height={20} />
           <Input
             placeholder="pilih harga"
             label="Harga Tisu"
-            value={form.harga}
-            onValueChange={value => setForm('harga', value)}
+            value={detailData.harga}
+            onChangeText={value => changeText('harga', value)}
             select
             selectItem={itemHarga}
           />
@@ -90,20 +70,20 @@ const InputForm = ({navigation}) => {
           <Input
             placeholder="Lokasi Alat Tisu"
             label="Lokasi Alat Tisu"
-            onChangeText={value => setForm('lokasi', value)}
-            value={form.lokasi}
+            onChangeText={value => changeText('lokasi', value)}
+            value={detailData.lokasi}
           />
 
           <Gap height={20} />
           <Input
             placeholder="Buat ID Tisu Baru"
             label="ID Tisu"
-            onChangeText={value => setForm('idTisu', value)}
-            value={form.idTisu}
+            onChangeText={value => changeText('idTisu', value)}
+            value={detailData.idTisu}
           />
           <Gap height={20} />
           <View>
-            <Button title="Tambahkan Alat" onPress={KirimDatabaseIdAlat} />
+            <Button title="Simpan Perubahan" onPress={SimpanAlat} />
           </View>
         </View>
       </ScrollView>
@@ -111,11 +91,16 @@ const InputForm = ({navigation}) => {
   );
 };
 
-export default InputForm;
+export default EditAlat;
 
 const styles = StyleSheet.create({
   header: {alignItems: 'center'},
+  page: {
+    flex: 1,
+    backgroundColor: '#F9F8F0',
+  },
   container: {
-    marginHorizontal: 20,
+    marginHorizontal: 19,
+    marginTop: 20,
   },
 });

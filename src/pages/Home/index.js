@@ -82,12 +82,15 @@ const Home = () => {
   var newData = [];
   for (let i = 0; i < kalkulasi.length; i++) {
     let nilaiInt = parseInt(kalkulasi[i].data.harga, 10);
+    const hargaTisu = kalkulasi[i].data.harga;
     Fire.database().ref(`Tisu/${kalkulasi[i].id}`).update(dataterbaca);
+    console.log('kalkulasi', kalkulasi[i]);
+    Fire.database().ref(`Tisu/${kalkulasi[i].id}/detailBiaya`).push(hargaTisu);
     newData.push({
       harga: nilaiInt,
     });
   }
-
+  console.log('newdata', newData);
   const dataharga = newData.reduce((accumulator, {harga}) => {
     return accumulator + harga;
   }, 0);

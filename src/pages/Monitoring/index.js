@@ -45,7 +45,7 @@ const Monitoring = ({navigation}) => {
                 key={item.id}
                 data={item.data.jumlahtisu}
                 tempat={item.data.lokasi}
-                harga={item.data.harga}
+                databaca={item.data.databaca}
                 kalkulasi1={item.data.RollA.Kondisi}
                 kalkulasi2={item.data.RollB.Kondisi}
                 onPress={() => navigation.navigate('DetailTisu', item)}

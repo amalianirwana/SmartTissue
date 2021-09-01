@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
-
+import {Picker} from '@react-native-community/picker';
 const Input = ({
   onValueChange,
   selectItem,
@@ -21,6 +21,26 @@ const Input = ({
   const onBlurForm = () => {
     setBorder('#F3F3F3');
   };
+  if (select) {
+    return (
+      <View>
+        <Text style={styles.label}>{label}</Text>
+        <View style={styles.picker}>
+          <Picker selectedValue={value} onValueChange={onValueChange}>
+            {selectItem.map(item => {
+              return (
+                <Picker.Item
+                  key={item.id}
+                  label={item.label}
+                  value={item.value}
+                />
+              );
+            })}
+          </Picker>
+        </View>
+      </View>
+    );
+  }
   return (
     <View>
       <Text style={styles.label}>{label}</Text>
@@ -54,5 +74,12 @@ const styles = StyleSheet.create({
     color: '#7D8797',
     marginBottom: 6,
     fontFamily: 'Nunito-Regular',
+  },
+  picker: {
+    backgroundColor: '#F3F3F3',
+    borderColor: '#F3F3F3',
+    borderRadius: 7,
+    borderWidth: 1,
+    paddingHorizontal: 4,
   },
 });

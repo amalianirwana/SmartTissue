@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 
 import {DetailEstimasiLogo, ILEstimasi} from '../../assets';
-import {Button, Gap} from '../../components';
+import {Button, Gap, ListBiaya} from '../../components';
 import {Header, ItemTisu} from '../../components/molecules';
 const DetailEstimasi = ({navigation, route}) => {
   const detailData = route.params;
@@ -20,10 +20,15 @@ const DetailEstimasi = ({navigation, route}) => {
 
   // set data estimasi semua
   var newDataEstimasi = [];
+  var dataBiayaPerbulan = [];
   for (let i = 0; i < data.length; i++) {
     let nilaiInt = data[i].data.dataharga;
     newDataEstimasi.push({
       harga: nilaiInt,
+    });
+    dataBiayaPerbulan.push({
+      harga: nilaiInt,
+      bulan: i + 1,
     });
   }
 
@@ -31,7 +36,7 @@ const DetailEstimasi = ({navigation, route}) => {
     return accumulator + harga;
   }, 0);
 
-  console.log('data', detailData);
+  console.log('data', dataBiayaPerbulan);
   return (
     <View style={{backgroundColor: '#F9F8F0', flex: 1}}>
       <View style={styles.header}>
@@ -51,30 +56,25 @@ const DetailEstimasi = ({navigation, route}) => {
             subTitle={`Rp${datahargaEstimasi}`}
           />
         </View>
-
         <Gap height={16} />
-        <View>
-          <Text>Detail Biaya Bulan September</Text>
-          <Gap height={10} />
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View>
-            <Text>Pengisian 1 : Rp8000</Text>
+            <Text>Detail Biaya Bulan September</Text>
+            <Gap height={10} />
+            {dataBiayaPerbulan.map(res => {
+              return (
+                <ListBiaya
+                  key={res.bulan}
+                  jumlah={res.bulan}
+                  harga={res.harga}
+                />
+              );
+            })}
           </View>
-          <Gap height={10} />
           <View>
-            <Text>Pengisian 2 : Rp8000</Text>
+            <Gap height={30} />
           </View>
-          <Gap height={10} />
-          <View>
-            <Text>Pengisian 3 : Rp10000</Text>
-          </View>
-          <Gap height={10} />
-          <View>
-            <Text>Pengisian 4 : Rp10000</Text>
-          </View>
-        </View>
-        <View>
-          <Gap height={30} />
-        </View>
+        </ScrollView>
       </View>
     </View>
   );

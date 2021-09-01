@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {Penghabisan, Putaran} from '../../../assets';
 import {
   Iconnice,
   Iconpaseo,
@@ -21,14 +22,19 @@ const ItemTisu = ({gambar, title, subTitle}) => {
       return <PengisianTisu />;
     } else if (gambar === 'pengisianEstimasi') {
       return <PengisianEstimasi />;
+    } else if (gambar === 'penghabisan') {
+      return <Penghabisan />;
+    } else if (gambar === 'putaran') {
+      return <Putaran />;
     } else {
       return <View />;
     }
   };
   return (
     <View style={styles.container}>
-      <Gap height={5} />
+      <Gap height={10} />
       <Text>{title}</Text>
+      <Gap height={5} />
       <Icon />
       <Gap height={5} />
       <Text>{subTitle}</Text>
