@@ -8,8 +8,12 @@ import Monitoring from './Monitoring';
 import DetailTisu from './DetailTisu';
 import ProfileUser from './ProfileUser';
 import InputForm from './InputForm';
+import DetailEstimasi from './DetailEstimasi';
+import EditAlat from './EditAlat';
 
 export {
+  EditAlat,
+  DetailEstimasi,
   InputForm,
   Splash,
   GetStarted,

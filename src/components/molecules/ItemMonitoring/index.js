@@ -29,7 +29,7 @@ export default ItemMonitoring;
 
 const styles = StyleSheet.create({
   container: {
-    width: 151,
+    width: 135,
     height: 135,
     backgroundColor: 'white',
     justifyContent: 'center',

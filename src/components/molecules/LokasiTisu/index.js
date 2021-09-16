@@ -6,20 +6,40 @@ import {
   IconTisuMerah,
   IconTisuKuning,
 } from '../../../assets/icon';
-const LokasiTisu = ({data, onPress, tempat}) => {
+const LokasiTisu = ({
+  data,
+  onPress,
+  tempat,
+  databaca,
+  kalkulasi1,
+  kalkulasi2,
+}) => {
+  const nilaiKalkulasi = kalkulasi1 + kalkulasi2;
+  console.log('nilai tisu', nilaiKalkulasi);
   const Icon = () => {
-    if (data === 2) {
+    if (nilaiKalkulasi === 2) {
       return <IconTisuHijau />;
-    } else if (data === 1) {
+    } else if (nilaiKalkulasi === 1) {
       return <IconTisuKuning />;
     } else {
       return <IconTisuMerah />;
     }
   };
+  const DataBaca = () => {
+    if (databaca === 'terbaca') {
+      return <Text style={styles.nonaktif}>Tisu di Alat Sudah habis</Text>;
+    } else if (databaca === 'tidak') {
+      return <Text style={styles.aktif}>Alat Sedang di monitoring</Text>;
+    }
+    return <Text>None</Text>;
+  };
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.wrapper}>
-        <Text style={styles.title}>{tempat}</Text>
+        <View>
+          <Text style={styles.title}>{tempat}</Text>
+          <DataBaca />
+        </View>
         <View style={styles.wrapperLogo}>
           <Icon style={styles.logo} />
         </View>
@@ -32,9 +52,8 @@ export default LokasiTisu;
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: 60,
-    backgroundColor: '#FED799',
+    backgroundColor: '#F97D48',
+    paddingVertical: 12,
     marginBottom: 18,
     paddingLeft: 13,
     paddingTop: 7,
@@ -50,20 +69,27 @@ const styles = StyleSheet.create({
   },
   wrapperLogo: {
     marginTop: 5,
+    backgroundColor: '#FED799',
+    padding: 8,
+    borderRadius: 12,
   },
   title: {
-    fontSize: 15,
-    fontFamily: 'Assistant-SemiBold',
+    fontSize: 20,
+    fontWeight: 'bold',
+    justifyContent: 'center',
     flex: 1,
+
+    color: 'white',
   },
-  desc: {
-    fontSize: 15,
-    fontFamily: 'Assistant-SemiBold',
-    color: '#A8A8A8',
-    marginTop: -17,
+  aktif: {
+    color: 'white',
+  },
+  nonaktif: {
+    color: 'white',
   },
   wrapper: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     marginRight: 20,
   },
 });

@@ -20,7 +20,13 @@ import Iconcoinharga from './coinharga.svg';
 import Iconinput from './input.svg';
 import Iconlogout from './logout.svg';
 import Iconavatar from './avatar.jpeg';
+import EstimasiDashboard from './estimasiDashboard.svg';
+import PengisianTisu from './pengisian.svg';
+import PengisianEstimasi from './pengisianEstimasi.svg';
 export {
+  PengisianEstimasi,
+  PengisianTisu,
+  EstimasiDashboard,
   IconHome,
   IconHomeActive,
   IconEstimated,
